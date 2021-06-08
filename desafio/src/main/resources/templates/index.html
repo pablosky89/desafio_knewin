@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Page</title>
+    <link rel="stylesheet" href="webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div align="center">
+        <div class="card-header">
+            <h1>Scraping News</h1>
+        </div>
+        <br/>
+        <div class="container">
+        <form th:action="@{/search}" class="form-inline">
+            <div class="form-group">
+                <input type="text" th:name="freeText" placeholder="Enter text to Search">
+            </div>
+            <button class="btn btn-primary btn-sm active" type="submit">Find</button>
+        </form>
+        </div>
+        <br/>
+        <div>
+            <a href="new" class="btn btn-success btn-sm active" role="button" aria-pressed="true">Add News</a>
+        </div>
+        <br/>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Url</th>
+                        <th scope="col">Inspect</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="news : ${listNews}">
+                        <td th:text="${news.id}">Id</td>
+                        <td th:text="${news.name}">Url</td>
+                        <td><a th:href="@{'/inspect/' + ${news.id}}">Go</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

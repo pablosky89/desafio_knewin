@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new Url</title>
+    <link rel="stylesheet" href="webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div align="center">
+        <div class="card-header">
+            <h1>Scraping News</h1>
+        </div>
+        <br/>
+        <br/>
+
+        <div class="container">
+            <form th:action="@{/save}" th:object="${news}" method="post">
+                <div class="form-group">
+                    <label>URL: </label>
+                    <input type="text" th:field="*{name}" class="form-control" placeholder="Enter URL"/>
+                    <div th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}" class="alert alert-warning" role="alert"></div>
+                    <button type="submit" class="btn btn-primary mt-2">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

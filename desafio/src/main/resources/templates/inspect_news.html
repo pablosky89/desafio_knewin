@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inspect Url</title>
+    <link rel="stylesheet" href="webjars/bootstrap/4.6.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div align="center">
+        <div class="container">
+            <table class="table table-hover" border="1" th:each="element : ${newsDetails}">
+                <tbody>
+                    <tr>
+                        <th scope="row">Name URL</th>
+                        <td th:text="${element.name}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Title</th>
+                        <td th:text="${element.title}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Subtitle</th>
+                        <td th:text="${element.subtitle}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Author</th>
+                        <td th:text="${element.author}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Date</th>
+                        <td th:text="${#temporals.format(element.date, 'dd/MM/yyyy HH:mm')}"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Content</th>
+                        <td style="white-space: pre-wrap" th:text="${element.content}">
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
